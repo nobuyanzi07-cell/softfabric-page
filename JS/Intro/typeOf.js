@@ -18,7 +18,7 @@ console.log("unValue", unValue,"its type is", typeof unValue)
 
 
 
-const bonus="5000"
+const bonus="200"
 const sallary=50000
 
 
