@@ -12,7 +12,7 @@ let val1="hello"
 let val2="How are you"
 let strictInequality=val1!==val2
 console.log(`val1=${val1}!==val2=${val2}
-    Ans ${strictInquality} its type is ${typeof strictInequality}`)
+    Ans ${strictInequality} its type is ${typeof strictInequality}`)
 
 let Inequality=val1!=val2
 console.log(`val1=${val1}!=val2=${val2}
