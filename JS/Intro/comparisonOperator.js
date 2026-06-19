@@ -10,7 +10,7 @@ console.log(`numb1=${numb1}===numb2=${numb2}
 
 let val1="hello"
 let val2="How are you"
-let strictEquality=val1!==val2
+let strictInequality=val1!==val2
 console.log(`val1=${val1}!==val2=${val2}
     Ans ${strictInquality} its type is ${typeof strictInequality}`)
 
