@@ -32,3 +32,4 @@ if (typeof height !== "number"){
 let base1 = "hello"
 let height1 = true;
 areaOfTriangle(base1,height1)
+//console.log(typeof areaOfTriangle)
