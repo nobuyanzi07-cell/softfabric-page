@@ -15,7 +15,8 @@ if (true) {
 //showCurrentTime();
 // callback function
 //interval = 5000 millisecon/ds = 5 seconds
-let k = 0 
+let k = 0;
+
 let invT = setInterval(function showCurrentTime() {
     if (k >= 5) {
         clearInterval(invT); // Stop the interval after 5 iterations
@@ -23,11 +24,17 @@ let invT = setInterval(function showCurrentTime() {
     }
 
     const rn = new Date();
-    alert(`Current time is: ${rn.getDate()}-${rn.getMonth() + 1}-${rn.getFullYear()} ${rn.toLocaleTimeString()}`);
-    console.log(`Current time is: ${rn.getDate()}-${rn.getMonth() + 1}-${rn.getFullYear()} ${rn.toLocaleTimeString()}`);
-}, 1000); // Call showCurrentTime every 2 seconds
-k = k + 1;
-console.log(`k is ${k}`);
+    alert(`Current time is: ${rn}`);
+    console.log(`Current time is: ${rn}`);
 
-clearInterval(invT); // Stop the interval after some time (optional)
+    k = k + 1; // increment inside the interval
+    console.log(`k is ${k}`);
+}, 2000); // Call showCurrentTime every 2 seconds
+
+function reminder() {
+    alert("This is a reminder to take a break and stretch!");
+}
+
+setTimeout(reminder, 10000); // Call reminder after 10 seconds
+
 // task 1
