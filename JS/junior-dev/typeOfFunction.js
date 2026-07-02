@@ -19,3 +19,11 @@ let k = areCircle(5);
 let rA = function rectangleArea(l, w) {
     return l * w;
 }
+
+rA(5, 3) // 15
+
+// simply function expression
+let rA2 =(l, w) => {
+    return l * w;
+}
+rA2(5, 3) // 15
