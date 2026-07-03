@@ -15,7 +15,7 @@ function shape(fn,shapeName,s1,s2,s3) {
     console.log(`s1 is: ${s1} and its type is: ${typeof s1}`)
     console.log(`s2 is: ${s2} and its type is: ${typeof s2}`)
     console.log(`s3 is: ${s3} and its type is: ${typeof s3}`)
-}
+
 
 // calling the function with created parameters
 
@@ -24,6 +24,7 @@ const result = fn(...args)
 
 console.log(`Area of ${shapeName}: ${result}`)
 return result
+}
 
 // call shape with each function
 shape(areaCircle,"circle",10)
