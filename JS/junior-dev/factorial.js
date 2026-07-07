@@ -11,4 +11,4 @@ function factorial(number) {
     return number * factorial(number - 1)
 }
 
-console.log(factorial(5)) // 120
+console.log(factorial(5)) // Answer should be 120
