@@ -62,7 +62,6 @@ manufacture: {
 };
 
 
-
 //console.log(`Car datatype ${typeof car}`);
 //console.log(car);
 //console.log("--using console.log(table)--");
