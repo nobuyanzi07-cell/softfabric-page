@@ -57,7 +57,3 @@ function updateFruits() {
     }
 }
 
-document.getElementById("original").addEventListener("click", original);
-document.getElementById("replace").addEventListener("click", replace);
-document.getElementById("updateFruits").addEventListener("click", updateFruits);
-
