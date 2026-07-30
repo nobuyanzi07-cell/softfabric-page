@@ -1,6 +1,6 @@
 import Navigation from "./Navigation";
-import MainSection from "./MainSection";
-import SideBar from "./SideBar";
+import MainSection from "./Mainsection";
+import SideBar from "./Sidebar";
 
 function AmazonPage() {
   return (
