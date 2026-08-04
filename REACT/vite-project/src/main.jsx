@@ -1,11 +1,10 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 
-import Mapping from './Mapping';
-
+import StatesAndEvents from './StatesAndEvents/Form2.0.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-   <Mapping/>
+   <StatesAndEvents />
   </StrictMode>,
 );

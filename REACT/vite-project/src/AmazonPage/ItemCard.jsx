@@ -1,7 +1,5 @@
-function Itemcard () {
-    const description =
-    "a classic, high-intensity cardio tool that improves agility, burns calories, and builds lower-body strength. Key equipment choices, proper form, and core techniques will help you maximize your workout.";
-  const amount = "KES 2,000";
+function ItemCard(props) {
+  const { description, amount, img } = props;
 
   //react application:primitive datatypes<string,boolean,numbers>
 
@@ -16,13 +14,10 @@ function Itemcard () {
       }}
     >
       <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
-        <img
-          width={"200px"}
-          src="https://m.media-amazon.com/images/I/71wm42EtoNL._AC_UL320_.jpg"
-        />
+        <img width={"200px"} src={img} />
       </div>
       <div style={{ textAlign: "left", fontSize: "10px" }}>{description}</div>
-      <div style={{ fontSize: "20px" }}>{amount}</div>
+      <div style={{ fontSize: "20px" }}>KES {amount}</div>
       <div style={{ display: "flex", justifyContent: "center" }}>
         <button
           style={{
@@ -39,4 +34,4 @@ function Itemcard () {
   );
 }
 
-export default Itemcard
+export default ItemCard;
