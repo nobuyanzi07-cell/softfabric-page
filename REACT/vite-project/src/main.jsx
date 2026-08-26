@@ -1,10 +1,11 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 
-import StatesAndEvents from './StatesAndEvents/Form2.0.jsx'
+import Routing from './Routing'
+
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-   <StatesAndEvents />
+     <Routing />
   </StrictMode>,
 );
