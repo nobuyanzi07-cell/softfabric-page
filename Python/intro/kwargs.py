@@ -18,7 +18,7 @@ myKwargs(name="Samson",email="Sam@sam.com",dict={"a":"a"})
 
 def area_rectangle(length,width):
     area=length*width
-    print(f"For rectnagle with length {length} and Width {width} are is {area}")
+    print(f"For rectnagle with length {length} and Width {width} area is {area}")
 
 #option 1 you call it directly with args.
 area_rectangle(5,2) #args
