@@ -1,0 +1,4 @@
+ts:2026-09-02T23:30:20.901617——func:hello——time:0.09.ms
+ts:2026-09-02T23:30:20.903928——func:big_count——time:2.03.ms
+ts:2026-09-02T23:33:30.193129——func:hello——time:0.09.ms
+ts:2026-09-02T23:33:30.194705——func:big_count——time:1.31.ms
