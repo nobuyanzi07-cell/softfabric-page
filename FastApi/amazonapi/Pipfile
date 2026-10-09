@@ -11,6 +11,8 @@ pydantic = {extras = ["email"], version = "*"}
 argon2-cffi = "*"
 pyjwt = "*"
 python-dotenv = "*"
+cloudinary = "*"
+python-multipart = "*"
 
 [dev-packages]
 
