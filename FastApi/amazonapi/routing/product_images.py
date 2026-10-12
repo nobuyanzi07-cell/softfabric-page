@@ -1,8 +1,9 @@
-from fastapi import APIRouter, File, HTTPException, UploadFile, status
+from fastapi import APIRouter, Depends, File, HTTPException, UploadFile, status
 from fastapi.concurrency import run_in_threadpool
 
 from cloud import delete_image, upload_image
 from db import db
+from deps import require_admin
 
 router = APIRouter(tags=["product images"])
 
@@ -26,7 +27,11 @@ async def upload_or_fail(contents: bytes) -> dict:
         raise HTTPException(status_code=502, detail="Image upload failed")
 
 
-@router.post("/products/{product_id}/images", status_code=status.HTTP_201_CREATED)
+@router.post(
+    "/products/{product_id}/images",
+    status_code=status.HTTP_201_CREATED,
+    dependencies=[Depends(require_admin)],
+)
 async def upload_product_image(product_id: int, file: UploadFile = File(...)):
     product = await db.product.find_unique(where={"id": product_id})
     if not product:
@@ -54,8 +59,12 @@ async def list_product_images(product_id: int):
     )
 
 
-@router.put("/products/{product_id}/images/{image_id}")
-async def replace_product_image(product_id: int, image_id: int, file: UploadFile = File(...)):
+@router.put(
+    "/products/{product_id}/images/{image_id}", dependencies=[Depends(require_admin)]
+)
+async def replace_product_image(
+    product_id: int, image_id: int, file: UploadFile = File(...)
+):
     image = await db.product_image.find_first(
         where={"id": image_id, "product_id": product_id}
     )
@@ -77,7 +86,9 @@ async def replace_product_image(product_id: int, image_id: int, file: UploadFile
     return {"message": "Image replaced", "image": updated}
 
 
-@router.delete("/products/{product_id}/images/{image_id}")
+@router.delete(
+    "/products/{product_id}/images/{image_id}", dependencies=[Depends(require_admin)]
+)
 async def delete_product_image(product_id: int, image_id: int):
     image = await db.product_image.find_first(
         where={"id": image_id, "product_id": product_id}

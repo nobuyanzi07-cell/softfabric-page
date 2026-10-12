@@ -1,11 +1,12 @@
 from typing import Optional
 
-from fastapi import APIRouter, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException, status
 from fastapi.concurrency import run_in_threadpool
 from pydantic import BaseModel, Field
 
 from cloud import delete_image
 from db import db
+from deps import require_admin
 
 router = APIRouter(prefix="/products", tags=["products"])
 
@@ -36,7 +37,9 @@ async def ensure_category(category_id: Optional[int]):
         )
 
 
-@router.post("", status_code=status.HTTP_201_CREATED)
+@router.post(
+    "", status_code=status.HTTP_201_CREATED, dependencies=[Depends(require_admin)]
+)
 async def create_product(payload: ProductIn):
     await ensure_category(payload.category_id)
     data = payload.model_dump(exclude_none=True)
@@ -63,7 +66,7 @@ async def get_product(product_id: int):
     return product
 
 
-@router.put("/{product_id}")
+@router.put("/{product_id}", dependencies=[Depends(require_admin)])
 async def update_product(product_id: int, payload: ProductUpdate):
     existing = await db.product.find_unique(where={"id": product_id})
     if not existing:
@@ -81,7 +84,7 @@ async def update_product(product_id: int, payload: ProductUpdate):
     return {"message": "Product updated", "product": product}
 
 
-@router.delete("/{product_id}")
+@router.delete("/{product_id}", dependencies=[Depends(require_admin)])
 async def delete_product(product_id: int, permanent: bool = False):
     existing = await db.product.find_unique(where={"id": product_id})
     if not existing:

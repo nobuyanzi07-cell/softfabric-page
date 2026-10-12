@@ -1,7 +1,8 @@
-from fastapi import APIRouter, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException, status
 from pydantic import BaseModel, Field
 
 from db import db
+from deps import require_admin
 
 router = APIRouter(prefix="/categories", tags=["categories"])
 
@@ -10,7 +11,9 @@ class CategoryIn(BaseModel):
     name: str = Field(min_length=1, max_length=250)
 
 
-@router.post("", status_code=status.HTTP_201_CREATED)
+@router.post(
+    "", status_code=status.HTTP_201_CREATED, dependencies=[Depends(require_admin)]
+)
 async def create_category(payload: CategoryIn):
     name = payload.name.strip()
     existing = await db.category.find_first(where={"name": name})

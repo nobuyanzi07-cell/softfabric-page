@@ -1,6 +1,7 @@
-from fastapi import APIRouter, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException, status
 
 from db import db
+from deps import get_current_user
 from schemas import SignupIn, LoginIn
 from security import hash_password, verify_password, create_token
 
@@ -47,4 +48,15 @@ async def login(data: LoginIn):
     return {
         "access_token": create_token(user.id, user.role),
         "token_type": "bearer",
+    }
+
+
+@router.get("/me")
+async def me(user=Depends(get_current_user)):
+    return {
+        "id": user.id,
+        "name": user.name,
+        "email": user.email,
+        "role": user.role,
+        "created_at": user.created_at,
     }
