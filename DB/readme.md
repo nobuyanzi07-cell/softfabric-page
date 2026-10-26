@@ -44,7 +44,7 @@ Examples Of Non Relational DBS
 1.Syntax for Sql
   -it is not case sensitive
   -sql keywords <reserved for the language>
-  -Each sql statement should termintate with a colon except the last one.
+  -Each sql statement should termintate with a (;) except the last one.
   -Atomic,<file>. Either all of them execute or all of them fail.
 
 1. Creating tables
